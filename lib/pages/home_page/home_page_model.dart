@@ -1,41 +1,31 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/empty_list_widget.dart';
-import '/components/logo/logo_widget.dart';
-import '/components/modal_post/modal_post_widget.dart';
-import '/components/post_card/post_card_widget.dart';
-import '/components/side_nav2_widget.dart';
+import '/components/create_modal/create_modal_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_media_display.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomePageModel extends FlutterFlowModel {
-  ///  State fields for stateful widgets in this page.
-
-  final unfocusNode = FocusNode();
-  // Model for SideNav_2 component.
-  late SideNav2Model sideNav2Model;
-  // Models for PostCard dynamic component.
-  late FlutterFlowDynamicModels<PostCardModel> postCardModels;
-  // Model for logo component.
-  late LogoModel logoModel;
-
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    sideNav2Model = createModel(context, () => SideNav2Model());
-    postCardModels = FlutterFlowDynamicModels(() => PostCardModel());
-    logoModel = createModel(context, () => LogoModel());
-  }
+  void initState(BuildContext context) {}
 
-  void dispose() {
-    unfocusNode.dispose();
-    sideNav2Model.dispose();
-    postCardModels.dispose();
-    logoModel.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 

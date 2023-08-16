@@ -12,17 +12,10 @@ import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-String convertStringToImage(List<String> imageString) {
-  return imageString[0];
+int likes(UserPostsRecord? post) {
+  return post!.likes!.length;
 }
 
-String? getFirstItem(List<String>? imageList) {
-  if (imageList != null && imageList.isNotEmpty) {
-    return imageList[0];
-  }
-  return null;
-}
-
-int convertDoubleToInt(double value) {
-  return value.toInt();
+bool hasUploadedMedia(String? mediaPath) {
+  return mediaPath != null && mediaPath.isNotEmpty;
 }

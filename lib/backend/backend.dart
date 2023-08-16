@@ -5,11 +5,15 @@ import '../auth/firebase_auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
+import 'schema/user_posts_record.dart';
 import 'schema/users_record.dart';
-import 'schema/example_arts_record.dart';
-import 'schema/bookmarks_record.dart';
-import 'schema/posts_record.dart';
-import 'schema/comments_record.dart';
+import 'schema/post_comments_record.dart';
+import 'schema/user_stories_record.dart';
+import 'schema/story_comments_record.dart';
+import 'schema/dogs_record.dart';
+import 'schema/friends_record.dart';
+import 'schema/chats_record.dart';
+import 'schema/chat_messages_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,11 +21,52 @@ export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
+export 'schema/user_posts_record.dart';
 export 'schema/users_record.dart';
-export 'schema/example_arts_record.dart';
-export 'schema/bookmarks_record.dart';
-export 'schema/posts_record.dart';
-export 'schema/comments_record.dart';
+export 'schema/post_comments_record.dart';
+export 'schema/user_stories_record.dart';
+export 'schema/story_comments_record.dart';
+export 'schema/dogs_record.dart';
+export 'schema/friends_record.dart';
+export 'schema/chats_record.dart';
+export 'schema/chat_messages_record.dart';
+
+/// Functions to query UserPostsRecords (as a Stream and as a Future).
+Future<int> queryUserPostsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      UserPostsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<UserPostsRecord>> queryUserPostsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      UserPostsRecord.collection,
+      UserPostsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<UserPostsRecord>> queryUserPostsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      UserPostsRecord.collection,
+      UserPostsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -60,152 +105,260 @@ Future<List<UsersRecord>> queryUsersRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query ExampleArtsRecords (as a Stream and as a Future).
-Future<int> queryExampleArtsRecordCount({
+/// Functions to query PostCommentsRecords (as a Stream and as a Future).
+Future<int> queryPostCommentsRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      ExampleArtsRecord.collection,
+      PostCommentsRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<ExampleArtsRecord>> queryExampleArtsRecord({
+Stream<List<PostCommentsRecord>> queryPostCommentsRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      ExampleArtsRecord.collection,
-      ExampleArtsRecord.fromSnapshot,
+      PostCommentsRecord.collection,
+      PostCommentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<ExampleArtsRecord>> queryExampleArtsRecordOnce({
+Future<List<PostCommentsRecord>> queryPostCommentsRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      ExampleArtsRecord.collection,
-      ExampleArtsRecord.fromSnapshot,
+      PostCommentsRecord.collection,
+      PostCommentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-/// Functions to query BookmarksRecords (as a Stream and as a Future).
-Future<int> queryBookmarksRecordCount({
+/// Functions to query UserStoriesRecords (as a Stream and as a Future).
+Future<int> queryUserStoriesRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      BookmarksRecord.collection,
+      UserStoriesRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<BookmarksRecord>> queryBookmarksRecord({
+Stream<List<UserStoriesRecord>> queryUserStoriesRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      BookmarksRecord.collection,
-      BookmarksRecord.fromSnapshot,
+      UserStoriesRecord.collection,
+      UserStoriesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<BookmarksRecord>> queryBookmarksRecordOnce({
+Future<List<UserStoriesRecord>> queryUserStoriesRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      BookmarksRecord.collection,
-      BookmarksRecord.fromSnapshot,
+      UserStoriesRecord.collection,
+      UserStoriesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-/// Functions to query PostsRecords (as a Stream and as a Future).
-Future<int> queryPostsRecordCount({
+/// Functions to query StoryCommentsRecords (as a Stream and as a Future).
+Future<int> queryStoryCommentsRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      PostsRecord.collection,
+      StoryCommentsRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<PostsRecord>> queryPostsRecord({
+Stream<List<StoryCommentsRecord>> queryStoryCommentsRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      PostsRecord.collection,
-      PostsRecord.fromSnapshot,
+      StoryCommentsRecord.collection,
+      StoryCommentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<PostsRecord>> queryPostsRecordOnce({
+Future<List<StoryCommentsRecord>> queryStoryCommentsRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      PostsRecord.collection,
-      PostsRecord.fromSnapshot,
+      StoryCommentsRecord.collection,
+      StoryCommentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-/// Functions to query CommentsRecords (as a Stream and as a Future).
-Future<int> queryCommentsRecordCount({
-  DocumentReference? parent,
+/// Functions to query DogsRecords (as a Stream and as a Future).
+Future<int> queryDogsRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      CommentsRecord.collection(parent),
+      DogsRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<CommentsRecord>> queryCommentsRecord({
-  DocumentReference? parent,
+Stream<List<DogsRecord>> queryDogsRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      CommentsRecord.collection(parent),
-      CommentsRecord.fromSnapshot,
+      DogsRecord.collection,
+      DogsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<CommentsRecord>> queryCommentsRecordOnce({
-  DocumentReference? parent,
+Future<List<DogsRecord>> queryDogsRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      CommentsRecord.collection(parent),
-      CommentsRecord.fromSnapshot,
+      DogsRecord.collection,
+      DogsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query FriendsRecords (as a Stream and as a Future).
+Future<int> queryFriendsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      FriendsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<FriendsRecord>> queryFriendsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      FriendsRecord.collection,
+      FriendsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<FriendsRecord>> queryFriendsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      FriendsRecord.collection,
+      FriendsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ChatsRecords (as a Stream and as a Future).
+Future<int> queryChatsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ChatsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ChatsRecord>> queryChatsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChatsRecord.collection,
+      ChatsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChatsRecord>> queryChatsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChatsRecord.collection,
+      ChatsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ChatMessagesRecords (as a Stream and as a Future).
+Future<int> queryChatMessagesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ChatMessagesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ChatMessagesRecord>> queryChatMessagesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChatMessagesRecord.collection,
+      ChatMessagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChatMessagesRecord>> queryChatMessagesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChatMessagesRecord.collection,
+      ChatMessagesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

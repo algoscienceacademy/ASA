@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
@@ -79,54 +78,159 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
-          routes: [
-            FFRoute(
-              name: 'StartPage',
-              path: 'startPage',
-              builder: (context, params) => StartPageWidget(),
-            ),
-            FFRoute(
-              name: 'GenerateArtPage',
-              path: 'generateArtPage',
-              builder: (context, params) => GenerateArtPageWidget(),
-            ),
-            FFRoute(
-              name: 'HomePage',
-              path: 'homePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomePage')
-                  : HomePageWidget(),
-            ),
-            FFRoute(
-              name: 'CreatePostPage',
-              path: 'createPostPage',
-              builder: (context, params) => CreatePostPageWidget(
-                generatedArtResult:
-                    params.getParam('generatedArtResult', ParamType.JSON),
-              ),
-            ),
-            FFRoute(
-              name: 'ProfilePage',
-              path: 'profilePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'ProfilePage')
-                  : ProfilePageWidget(),
-            ),
-            FFRoute(
-              name: 'EditProfile',
-              path: 'editProfile',
-              builder: (context, params) => EditProfileWidget(),
-            )
-          ].map((r) => r.toRoute(appStateNotifier)).toList(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
         ),
+        FFRoute(
+          name: 'login',
+          path: '/login',
+          builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+          name: 'createAccount',
+          path: '/createAccount',
+          builder: (context, params) => CreateAccountWidget(),
+        ),
+        FFRoute(
+          name: 'createDogProfile',
+          path: '/createDogProfile',
+          builder: (context, params) => CreateDogProfileWidget(),
+        ),
+        FFRoute(
+          name: 'createYourProfile',
+          path: '/createYourProfile',
+          builder: (context, params) => CreateYourProfileWidget(),
+        ),
+        FFRoute(
+          name: 'forgotPassword',
+          path: '/forgotPassword',
+          builder: (context, params) => ForgotPasswordWidget(),
+        ),
+        FFRoute(
+          name: 'homePage',
+          path: '/homePage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'homePage')
+              : HomePageWidget(),
+        ),
+        FFRoute(
+          name: 'profilePage',
+          path: '/profilePage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'profilePage')
+              : ProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'createStory',
+          path: '/createStory',
+          builder: (context, params) => CreateStoryWidget(),
+        ),
+        FFRoute(
+          name: 'createPost',
+          path: '/createPost',
+          builder: (context, params) => CreatePostWidget(),
+        ),
+        FFRoute(
+          name: 'postDetails',
+          path: '/postDetails',
+          asyncParams: {
+            'userRecord': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => PostDetailsWidget(
+            postReference: params.getParam('postReference',
+                ParamType.DocumentReference, false, ['userPosts']),
+            userRecord: params.getParam('userRecord', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'storyDetails',
+          path: '/storyDetails',
+          builder: (context, params) => StoryDetailsWidget(
+            initialStoryIndex:
+                params.getParam('initialStoryIndex', ParamType.int),
+          ),
+        ),
+        FFRoute(
+          name: 'editSettings',
+          path: '/editSettings',
+          builder: (context, params) => EditSettingsWidget(),
+        ),
+        FFRoute(
+          name: 'editUserProfile',
+          path: '/editUserProfile',
+          builder: (context, params) => EditUserProfileWidget(),
+        ),
+        FFRoute(
+          name: 'editDogProfile',
+          path: '/editDogProfile',
+          asyncParams: {
+            'dogProfile': getDoc(['dogs'], DogsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditDogProfileWidget(
+            dogProfile: params.getParam('dogProfile', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'changePassword',
+          path: '/changePassword',
+          builder: (context, params) => ChangePasswordWidget(),
+        ),
+        FFRoute(
+          name: 'viewProfilePageOther',
+          path: '/viewProfilePageOther',
+          asyncParams: {
+            'userDetails': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => ViewProfilePageOtherWidget(
+            userDetails: params.getParam('userDetails', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'createDogProfile_New',
+          path: '/createDogProfileNew',
+          builder: (context, params) => CreateDogProfileNewWidget(),
+        ),
+        FFRoute(
+          name: 'chatPage',
+          path: '/chatPage',
+          asyncParams: {
+            'chatUser': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => ChatPageWidget(
+            chatUser: params.getParam('chatUser', ParamType.Document),
+            chatRef: params.getParam(
+                'chatRef', ParamType.DocumentReference, false, ['chats']),
+          ),
+        ),
+        FFRoute(
+          name: 'allChatsPage',
+          path: '/allChatsPage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'allChatsPage')
+              : AllChatsPageWidget(),
+        ),
+        FFRoute(
+          name: 'addChatUsers',
+          path: '/addChatUsers',
+          asyncParams: {
+            'chat': getDoc(['chats'], ChatsRecord.fromSnapshot),
+          },
+          builder: (context, params) => AddChatUsersWidget(
+            chat: params.getParam('chat', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'createGroupChat',
+          path: '/createGroupChat',
+          builder: (context, params) => CreateGroupChatWidget(),
+        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -291,7 +395,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/startPage';
+            return '/login';
           }
           return null;
         },
@@ -306,9 +410,12 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Container(
                   color: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/flutterFlowUI_Replicate@3x.jpg',
-                    fit: BoxFit.cover,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/1808986.jpg',
+                      width: 500.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 )
               : page;

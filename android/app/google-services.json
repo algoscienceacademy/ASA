@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "805885138076",
-    "project_id": "fir-ccc7a",
-    "storage_bucket": "fir-ccc7a.appspot.com"
+    "project_number": "716801995027",
+    "project_id": "chat-d5272",
+    "storage_bucket": "chat-d5272.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:805885138076:android:e37a1a72da5ec283530959",
+        "mobilesdk_app_id": "1:716801995027:android:349f453490a0046264aae6",
         "android_client_info": {
-          "package_name": "io.flutterflow.artser"
+          "package_name": "com.flutterflow.sniffsocial"
         }
       },
       "oauth_client": [
         {
-          "client_id": "805885138076-u44n554miq5ojp4juinhn004vbdpm9ci.apps.googleusercontent.com",
+          "client_id": "716801995027-3i6mq5dnip9pfkt55381kh4eg2e1ufh9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBOa_5qo9nuck5L7kkzSEtfmyEXvGMGE6M"
+          "current_key": "AIzaSyApjDPe86xIA7FE7GM22xLFlitzjpxyiIM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "805885138076-u44n554miq5ojp4juinhn004vbdpm9ci.apps.googleusercontent.com",
+              "client_id": "716801995027-3802hqjgebhhq1mqr7qda6mfnbnurtlo.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "805885138076-ngi29f225hcm1npvna129ngecaucbivb.apps.googleusercontent.com",
+              "client_id": "716801995027-3gj6ah5cj4r2otquka37nr3o4lqrqq62.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "io.flutterflow.artser"
+                "bundle_id": "com.flutterflow.sniffsocial"
               }
             }
           ]

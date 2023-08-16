@@ -1,4 +1,4 @@
-package io.flutterflow.artser
+package com.flutterflow.sniffsocial
 
 import io.flutter.embedding.android.FlutterActivity
 

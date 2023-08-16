@@ -54,14 +54,11 @@ abstract class FlutterFlowTheme {
   late Color error;
   late Color info;
 
-  late Color primaryBtnText;
-  late Color lineColor;
-  late Color subtitle;
-  late Color bottomSheetText;
-  late Color errorOld;
-  late Color iconColor;
-  late Color postCardBackground;
-  late Color overlayColor;
+  late Color primaryDark;
+  late Color background;
+  late Color grayIcon;
+  late Color gray200;
+  late Color dark600;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -134,13 +131,13 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF2992FF);
-  late Color secondary = const Color(0xFF6DB3FB);
-  late Color tertiary = const Color(0xFF1A6BBF);
-  late Color alternate = const Color(0xFF2CAE9F);
-  late Color primaryText = const Color(0xFF0D0B12);
-  late Color secondaryText = const Color(0xFF4F5D6D);
-  late Color primaryBackground = const Color(0xFFF6FAFD);
+  late Color primary = const Color(0xFF4E39F9);
+  late Color secondary = const Color(0xFF39D2C0);
+  late Color tertiary = const Color(0xFFFFFFFF);
+  late Color alternate = const Color(0xFF1A1F24);
+  late Color primaryText = const Color(0xFF1A1F24);
+  late Color secondaryText = const Color(0xFF95A1AC);
+  late Color primaryBackground = const Color(0xFFF1F4F8);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
   late Color accent1 = const Color(0xFF616161);
   late Color accent2 = const Color(0xFF757575);
@@ -151,14 +148,11 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFE21C3D);
   late Color info = const Color(0xFF1C4494);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFFE3E9F0);
-  late Color subtitle = Color(0x80040814);
-  late Color bottomSheetText = Color(0xFF4EC7B4);
-  late Color errorOld = Color(0xFFF57B25);
-  late Color iconColor = Color(0xFF768699);
-  late Color postCardBackground = Color(0xFF1D2428);
-  late Color overlayColor = Color(0x9AECF7FD);
+  late Color primaryDark = Color(0xFF1A1F24);
+  late Color background = Color(0xFFF1F4F8);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color gray200 = Color(0xFFDBE2E7);
+  late Color dark600 = Color(0xFF262D34);
 }
 
 abstract class Typography {
@@ -213,12 +207,12 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Outfit';
+  String get displaySmallFamily => 'Urbanist';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Urbanist',
         color: theme.primaryText,
-        fontWeight: FontWeight.bold,
-        fontSize: 36.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 32.0,
       );
   String get headlineLargeFamily => 'Outfit';
   TextStyle get headlineLarge => GoogleFonts.getFont(
@@ -227,18 +221,18 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Outfit';
+  String get headlineMediumFamily => 'Urbanist';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Urbanist',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 28.0,
+        fontSize: 24.0,
       );
-  String get headlineSmallFamily => 'Outfit';
+  String get headlineSmallFamily => 'Urbanist';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Outfit',
-        color: theme.primaryBtnText,
-        fontWeight: FontWeight.w600,
+        'Urbanist',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
         fontSize: 20.0,
       );
   String get titleLargeFamily => 'Outfit';
@@ -248,18 +242,18 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Plus Jakarta Sans';
+  String get titleMediumFamily => 'Urbanist';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
-        color: theme.primary,
-        fontWeight: FontWeight.w600,
-        fontSize: 18.0,
+        'Urbanist',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 16.0,
       );
-  String get titleSmallFamily => 'Plus Jakarta Sans';
+  String get titleSmallFamily => 'Urbanist';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Urbanist',
         color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.bold,
         fontSize: 16.0,
       );
   String get labelLargeFamily => 'Outfit';
@@ -290,18 +284,18 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Plus Jakarta Sans';
+  String get bodyMediumFamily => 'Urbanist';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Urbanist',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Plus Jakarta Sans';
+  String get bodySmallFamily => 'Urbanist';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Urbanist',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
 }
@@ -314,14 +308,14 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF2992FF);
-  late Color secondary = const Color(0xFF6DB3FB);
-  late Color tertiary = const Color(0xFF1A6BBF);
-  late Color alternate = const Color(0xFF2CAE9F);
+  late Color primary = const Color(0xFF4E39F9);
+  late Color secondary = const Color(0xFF39D2C0);
+  late Color tertiary = const Color(0xFFFFFFFF);
+  late Color alternate = const Color(0xFF1A1F24);
   late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF8DA1B7);
-  late Color primaryBackground = const Color(0xFF161C23);
-  late Color secondaryBackground = const Color(0xFF0D1116);
+  late Color secondaryText = const Color(0xFF95A1AC);
+  late Color primaryBackground = const Color(0xFF262D34);
+  late Color secondaryBackground = const Color(0xFF1A1F24);
   late Color accent1 = const Color(0xFFEEEEEE);
   late Color accent2 = const Color(0xFFE0E0E0);
   late Color accent3 = const Color(0xFF757575);
@@ -331,14 +325,11 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFE21C3D);
   late Color info = const Color(0xFF1C4494);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFF1C232B);
-  late Color subtitle = Color(0x80FFFFFF);
-  late Color bottomSheetText = Color(0xFF9CFFE0);
-  late Color errorOld = Color(0xFFF57B25);
-  late Color iconColor = Color(0xFF4F5D6D);
-  late Color postCardBackground = Color(0xFF1D2428);
-  late Color overlayColor = Color(0xB2161C1C);
+  late Color primaryDark = Color(0xFF1A1F24);
+  late Color background = Color(0xFFF1F4F8);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color gray200 = Color(0xFFDBE2E7);
+  late Color dark600 = Color(0xFF262D34);
 }
 
 extension TextStyleHelper on TextStyle {
